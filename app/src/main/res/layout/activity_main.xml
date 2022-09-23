@@ -10,7 +10,7 @@
     tools:context=".MainActivity">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/email_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/tv_correo"
@@ -19,14 +19,14 @@
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/et-email;"
-        android:layout_width="match_parent"
+        android:id="@+id/et_email"
+        android:layout_width="396dp"
         android:layout_height="wrap_content"
         android:ems="10"
         android:inputType="textEmailAddress" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/password_text"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Password"
@@ -50,14 +50,14 @@
         <ImageButton
             android:id="@+id/bt_signin"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="54dp"
             android:layout_weight="1"
             app:srcCompat="@drawable/ic_signin" />
 
         <ImageButton
-            android:id="@+id/imageButton2"
+            android:id="@+id/bt_logging"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             app:srcCompat="@drawable/ic_login" />
     </LinearLayout>

@@ -27,6 +27,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+
+
         binding=ActivityMainBinding.inflate(layoutInflater)
 
         setContentView(binding.root)
@@ -37,7 +39,7 @@ class MainActivity : AppCompatActivity() {
 
         auth = Firebase.auth
 
-        //Definimos el evento Onclick
+        //Definimos los eventos Onclick
 
         binding.btSignin.setOnClickListener{
             SignIn()
@@ -54,8 +56,8 @@ class MainActivity : AppCompatActivity() {
     private fun SignIn() {
 
         //Recupero la informacion que le usuario escribio
-        val email= binding.etEmail.text.toString()
-        val password= binding.etPassword.text.toString()
+        val email= binding.etPassword.text.toString()
+        val password= binding.etEmail.text.toString()
 
         //Crear el usuario
         auth.createUserWithEmailAndPassword(email,password)
