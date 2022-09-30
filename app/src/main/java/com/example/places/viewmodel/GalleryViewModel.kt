@@ -1,4 +1,4 @@
-package com.example.places.ui.gallery
+package com.example.places.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

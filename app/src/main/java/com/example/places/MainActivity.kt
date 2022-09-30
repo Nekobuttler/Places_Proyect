@@ -3,6 +3,7 @@ package com.example.places
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import com.example.places.databinding.ActivityMainBinding
 import com.google.firebase.FirebaseApp
@@ -84,5 +85,31 @@ class MainActivity : AppCompatActivity() {
 
     private fun LogIn() {
 
+        val email= binding.etEmail.text.toString()
+        val password= binding.etPassword.text.toString()
+
+
+        auth.signInWithEmailAndPassword(email,password)
+            .addOnCompleteListener(this) {
+                task -> if(task.isSuccessful){
+                    Log.d("AUTENTICANDO ", "se autentico")
+                    val user = auth.currentUser
+                refresh(user)
+                } else{
+
+                Toast.makeText(baseContext, "Fallo",Toast.LENGTH_LONG).show()
+                refresh(null)
+                }
+
+            }
     }
+
+public override fun onStart(){
+
+    super.onStart()
+    val user = auth.currentUser
+    refresh(user)
+}
+
+
 }
