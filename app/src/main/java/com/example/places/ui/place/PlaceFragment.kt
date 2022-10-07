@@ -7,7 +7,12 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.places.R
+import com.example.places.adapter.PlaceAdapter
 import com.example.places.databinding.FragmentPlaceBinding
+import com.example.places.model.Place
 import com.example.places.viewmodel.PlaceViewModel
 
 class PlaceFragment : Fragment() {
@@ -18,20 +23,36 @@ class PlaceFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
 
+    private lateinit var placeViewModel: PlaceViewModel
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
-            ViewModelProvider(this).get(PlaceViewModel::class.java)
-
+        placeViewModel =ViewModelProvider(this).get(PlaceViewModel::class.java)
         _binding = FragmentPlaceBinding.inflate(inflater, container, false)
-        val root: View = binding.root
+        //val root: View = binding.root
 
-        val textView: TextView = binding.textHome
+        binding.addPlaceBtn.setOnClickListener {
+            findNavController().navigate(R.id.action_addPlaceFragment_to_nav_place)
+        }
 
-        return root
+
+        //ACTIVAR EL RECYCLER VIEW usando el adapter
+
+        val placeAdapter = PlaceAdapter()
+
+        val recycler = binding.recycler
+        recycler.adapter = placeAdapter
+
+        recycler.layoutManager = LinearLayoutManager(requireContext())
+
+        placeViewModel.getPlaces.observe(viewLifecycleOwner) {
+            places -> placeAdapter.setPlaces(places)
+        }
+
+        return binding.root
     }
 
     override fun onDestroyView() {

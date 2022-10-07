@@ -22,17 +22,19 @@ class PlaceViewModel(application: Application) : AndroidViewModel(application) {
 
     }
 
-    suspend fun addPlace(place: Place) {
+     fun savePlace(place: Place) {
         viewModelScope.launch {
-            repository.addPlace(place)
+            repository.savePlace(place)
         }
     }
 
+    /*
     suspend fun updatePlace(place: Place) {
         viewModelScope.launch {
             repository.updatePlace(place)
         }
     }
+    */
 
 
     suspend fun deletePlace(place: Place) {

@@ -13,4 +13,17 @@
     <string name="menu_place">Places</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="msg_name">Name of the place</string>
+    <string name="msg_email">Email (correo@xxx.xxx)</string>
+    <string name="msg_cellphone">Telefono (9999-9999)</string>
+    <string name="msg_web">Sitio Web </string>
+    <string name="bt_add_place">Add Place</string>
+    <string name="bt_update_place">Update Place</string>
+    <string name="msg_place_added">Place Added</string>
+    <string name="msg_place_updated">Place Updated</string>
+    <string name="msg_data">Faltan Datos</string>
 </resources>

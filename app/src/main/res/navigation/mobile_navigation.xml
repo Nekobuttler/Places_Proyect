@@ -9,7 +9,14 @@
         android:id="@+id/nav_place"
         android:name="com.example.places.ui.place.PlaceFragment"
         android:label="@string/menu_place"
-        tools:layout="@layout/fragment_place" />
+        tools:layout="@layout/fragment_place" >
+        <action
+            android:id="@+id/action_nav_place_to_addPlaceFragment2"
+            app:destination="@id/addPlaceFragment" />
+        <action
+            android:id="@+id/action_nav_place_to_updatePlaceFragment"
+            app:destination="@id/updatePlaceFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/nav_gallery"
@@ -22,4 +29,25 @@
         android:name="com.example.places.ui.slideshow.SlideshowFragment"
         android:label="@string/menu_slideshow"
         tools:layout="@layout/fragment_slideshow" />
+    <fragment
+        android:id="@+id/addPlaceFragment"
+        android:name="com.example.places.ui.place.AddPlaceFragment"
+        android:label="@string/bt_add_place"
+        tools:layout="@layout/fragment_add_place" >
+        <action
+            android:id="@+id/action_addPlaceFragment_to_nav_place"
+            app:destination="@id/nav_place" />
+    </fragment>
+    <fragment
+        android:id="@+id/updatePlaceFragment"
+        android:name="com.example.places.ui.place.UpdatePlaceFragment"
+        android:label="@string/bt_update_place"
+        tools:layout="@layout/fragment_update_place" >
+        <action
+            android:id="@+id/action_updatePlaceFragment_to_nav_place"
+            app:destination="@id/nav_place" />
+        <argument
+            android:name="Place"
+            app:argType="com.example.places.model.Place" />
+    </fragment>
 </navigation>

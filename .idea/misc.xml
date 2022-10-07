@@ -5,12 +5,20 @@
       <map>
         <entry key="..\:/Users/XPC/AndroidStudioProjects/Places/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.14" />
         <entry key="..\:/Users/XPC/AndroidStudioProjects/Places/app/src/main/res/drawable/ic_baseline_login_24.xml" value="0.14" />
+        <entry key="..\:/Users/XPC/AndroidStudioProjects/Places/app/src/main/res/drawable/ic_baseline_playlist_add_24.xml" value="0.251" />
         <entry key="..\:/Users/XPC/AndroidStudioProjects/Places/app/src/main/res/drawable/ic_launcher_background.xml" value="0.14" />
         <entry key="..\:/Users/XPC/AndroidStudioProjects/Places/app/src/main/res/drawable/ic_logout.xml" value="0.1765" />
         <entry key="..\:/Users/XPC/AndroidStudioProjects/Places/app/src/main/res/layout/activity_main.xml" value="0.5" />
         <entry key="..\:/Users/XPC/AndroidStudioProjects/Places/app/src/main/res/layout/activity_principal_content.xml" value="0.33" />
+        <entry key="..\:/Users/XPC/AndroidStudioProjects/Places/app/src/main/res/layout/app_bar_principal_content.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/XPC/AndroidStudioProjects/Places/app/src/main/res/layout/content_principal_content.xml" value="0.25" />
-        <entry key="..\:/Users/XPC/AndroidStudioProjects/Places/app/src/main/res/layout/fragment_place.xml" value="0.20520833333333333" />
+        <entry key="..\:/Users/XPC/AndroidStudioProjects/Places/app/src/main/res/layout/fragment_add_place.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/XPC/AndroidStudioProjects/Places/app/src/main/res/layout/fragment_gallery.xml" value="0.21846153846153846" />
+        <entry key="..\:/Users/XPC/AndroidStudioProjects/Places/app/src/main/res/layout/fragment_place.xml" value="0.2" />
+        <entry key="..\:/Users/XPC/AndroidStudioProjects/Places/app/src/main/res/layout/fragment_slideshow.xml" value="0.21846153846153846" />
+        <entry key="..\:/Users/XPC/AndroidStudioProjects/Places/app/src/main/res/layout/fragment_update_place.xml" value="0.221875" />
+        <entry key="..\:/Users/XPC/AndroidStudioProjects/Places/app/src/main/res/layout/nav_header_principal_content.xml" value="0.21846153846153846" />
+        <entry key="..\:/Users/XPC/AndroidStudioProjects/Places/app/src/main/res/layout/place_row.xml" value="0.32625994694960214" />
         <entry key="..\:/Users/XPC/AndroidStudioProjects/Places/app/src/main/res/menu/activity_main_drawer.xml" value="0.1" />
         <entry key="..\:/Users/XPC/AndroidStudioProjects/Places/app/src/main/res/menu/principal__content.xml" value="0.33" />
         <entry key="..\:/Users/XPC/AndroidStudioProjects/Places/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.345" />

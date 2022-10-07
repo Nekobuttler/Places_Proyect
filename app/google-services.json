@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "162418292660",
-    "project_id": "places-641d6",
-    "storage_bucket": "places-641d6.appspot.com"
+    "project_number": "43130361544",
+    "project_id": "imusic-ffd9b",
+    "storage_bucket": "imusic-ffd9b.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:162418292660:android:6d88358b82445c43cc64e1",
+        "mobilesdk_app_id": "1:43130361544:android:38a7671bbf11d75ba937fd",
         "android_client_info": {
           "package_name": "com.example.places"
         }
       },
       "oauth_client": [
         {
-          "client_id": "162418292660-8usjbcmoahbme31mcamfkoom5opt9s1c.apps.googleusercontent.com",
+          "client_id": "43130361544-joprhvc4j41l5s72aillm3si4p5o6eqn.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDvzGB7Y7wG-yuuOP9-nJtgiJWs_0DDB5U"
+          "current_key": "AIzaSyAOnF8CH3ouKQMlfKl2KB1mr6kMgvk4WzA"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "162418292660-8usjbcmoahbme31mcamfkoom5opt9s1c.apps.googleusercontent.com",
+              "client_id": "43130361544-joprhvc4j41l5s72aillm3si4p5o6eqn.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
