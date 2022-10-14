@@ -3,6 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.places">
 
+
+    <!-- seccion para colocar permisos nesesarios a aceptar por el usuario de la aplicacion-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="permision.Call_Phone"/>
+<uses-permission android:name="permision.ACCESS_FINE_LOCATION"/>
+<uses-permission android:name="permission.ACCESS_COARSE_LOCATION"/>
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"

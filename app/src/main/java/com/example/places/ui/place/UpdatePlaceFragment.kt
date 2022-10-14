@@ -1,4 +1,9 @@
 package com.example.places.ui.place
+import android.Manifest
+import android.app.AlertDialog
+import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,6 +19,8 @@ import com.example.places.databinding.FragmentAddPlaceBinding
 import com.example.places.databinding.FragmentUpdatePlaceBinding
 import com.example.places.model.Place
 import com.example.places.viewmodel.PlaceViewModel
+import java.net.URI
+import java.util.logging.Level.parse
 
 class UpdatePlaceFragment : Fragment() {
 
@@ -46,13 +53,133 @@ class UpdatePlaceFragment : Fragment() {
         binding.etAddPhone.setText(args.place.phone)
         binding.etWeb.setText(args.place.web)
 
+        binding.tvLatitud.text = args.place.latitud.toString()
+        binding.tvLongitud.text = args.place.longitud.toString()
+        binding.tvAltura.text = args.place.altura.toString()
 
         binding.btUpdatePlace.setOnClickListener{
             updatePlace()
         }
 
+        binding.btDelete.setOnClickListener{
+            deletePlace()
+        }
+        binding.btEmail.setOnClickListener{
+            sendEmail()
+        }
+        binding.btPhone.setOnClickListener{
+            callPlace()
+        }
+        binding.btWhatsapp.setOnClickListener{
+            sendMessage()
+        }
+        binding.btWeb.setOnClickListener{
+            seeWeb()
+        }
+        binding.btLocation.setOnClickListener{
+            seeMap()
+        }
 
         return binding.root
+    }
+
+    private fun sendEmail() {
+        val value  = binding.etEmailPlace.text.toString()
+        if(value.isNotEmpty()){
+            val intent = Intent(Intent.ACTION_SEND)
+            intent.type="message/rfc882"
+            intent.putExtra(Intent.EXTRA_EMAIL , arrayOf(value))
+            intent.putExtra(Intent.EXTRA_SUBJECT ,
+            getString(R.string.msg_saludos) + " "
+                    + binding.etName.text)
+            intent.putExtra(Intent.EXTRA_TEXT ,
+                getString(R.string.msg_mensaje_correo))
+            startActivity(intent)
+
+        }else{
+            Toast.makeText(requireContext(),getString(R.string.msg_data),Toast.LENGTH_LONG).show()
+        }
+    }
+
+    private fun seeWeb() {
+        val value  = binding.etWeb.text.toString()
+        if(value.isNotEmpty()){
+
+            val uri = "http://$value"
+            val intent = Intent(Intent.ACTION_VIEW , Uri.parse(uri))
+            startActivity(intent)
+        }else{
+            Toast.makeText(requireContext(),getString(R.string.msg_data),Toast.LENGTH_LONG).show()
+        }
+    }
+
+    private fun seeMap() {
+        val latitud  = binding.tvLatitud.text.toString().toDouble()
+        val longitud  = binding.tvLongitud.text.toString().toDouble()
+        val altura  = binding.tvAltura.text.toString().toDouble()
+        if(latitud.isFinite() && longitud.isFinite()){
+
+            val uri = "geo:$latitud,$longitud?z18 "
+            val intent = Intent(Intent.ACTION_VIEW , Uri.parse(uri))
+            startActivity(intent)
+
+
+        }else{
+            Toast.makeText(requireContext(),getString(R.string.msg_data),Toast.LENGTH_LONG).show()
+        }
+    }
+
+    private fun callPlace() {
+        val value  = binding.etAddPhone.text.toString()
+        if(value.isNotEmpty()){
+            val intent = Intent(Intent.ACTION_CALL)
+            intent.data = Uri.parse("tel:$value")
+            if(requireActivity().
+                checkSelfPermission(Manifest.permission.CALL_PHONE) !=
+                    PackageManager.PERMISSION_GRANTED){
+                //Pedir autorizacion
+                requireActivity().requestPermissions(arrayOf(Manifest.permission.CALL_PHONE), 105)
+            }else{
+                requireActivity().startActivity(intent)
+            }
+            startActivity(intent)
+
+
+        }else{
+            Toast.makeText(requireContext(),getString(R.string.msg_data),Toast.LENGTH_LONG).show()
+        }
+    }
+
+    private fun sendMessage() {
+        val value  = binding.etAddPhone.text.toString()
+        if(value.isNotEmpty()){
+            val intent = Intent(Intent.ACTION_VIEW)
+            val uri = "whatsapp://send?phone=506$value&text="+getString(R.string.msg_saludos)
+            intent.setPackage("com.whatsapp")
+            intent.data = Uri.parse(uri)
+            startActivity(intent)
+
+
+        }else{
+            Toast.makeText(requireContext(),getString(R.string.msg_data),Toast.LENGTH_LONG).show()
+        }
+    }
+
+    private fun deletePlace() {
+        //Ventana de dialogo
+
+        val alert = AlertDialog.Builder(requireContext())
+        alert.setTitle(R.string.bt_delete_place)
+        alert.setMessage(getString(R.string.msg_question) + "${args.place.name}?")
+        alert.setPositiveButton(getString(R.string.msg_yes)) {
+            _,_ ->
+                placeViewModel.deletePlace(args.place)
+                Toast.makeText(requireContext(),getString(R.string.msg_deleted_place) , Toast.LENGTH_LONG).show()
+                findNavController().navigate(R.id.action_updatePlaceFragment_to_nav_place)
+        }
+        alert.setNegativeButton(getString(R.string.msg_no)){
+            _,_-> }
+        alert.create().show()
     }
 
     //Registro de los datos en la base de datos
@@ -67,7 +194,7 @@ class UpdatePlaceFragment : Fragment() {
             placeViewModel.savePlace(place)
 
             Toast.makeText(requireContext(),getString(R.string.msg_place_updated),Toast.LENGTH_SHORT).show()
-            findNavController().navigate(R.id.action_addPlaceFragment_to_nav_place)
+            findNavController().navigate(R.id.action_updatePlaceFragment_to_nav_place)
         }else{
             Toast.makeText(requireContext(),getString(R.string.msg_data),Toast.LENGTH_LONG).show()
         }
