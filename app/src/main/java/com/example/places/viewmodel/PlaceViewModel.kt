@@ -10,17 +10,9 @@ import kotlinx.coroutines.launch
 
 class PlaceViewModel(application: Application) : AndroidViewModel(application) {
 
-    private val repository: PlaceRepository
+    private val repository: PlaceRepository = PlaceRepository(PlaceDao())
 
-    val getPlaces: LiveData<List<Place>>
-
-
-    init {
-        val placeDao = PlaceDatabase.getDatabase(application).placeDao()
-        repository = PlaceRepository(placeDao)
-        getPlaces = repository.getPlaces
-
-    }
+    val getPlaces = repository.getPlaces
 
      fun savePlace(place: Place) {
         viewModelScope.launch {

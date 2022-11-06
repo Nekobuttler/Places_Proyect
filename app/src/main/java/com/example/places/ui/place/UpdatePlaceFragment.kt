@@ -57,7 +57,7 @@ class UpdatePlaceFragment : Fragment() {
         binding.tvLongitud.text = args.place.longitud.toString()
         binding.tvAltura.text = args.place.altura.toString()
 
-        binding.btUpdatePlace.setOnClickListener{
+        binding.btAddPlace.setOnClickListener{
             updatePlace()
         }
 

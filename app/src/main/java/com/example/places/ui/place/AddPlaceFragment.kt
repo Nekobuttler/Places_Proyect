@@ -91,7 +91,7 @@ class AddPlaceFragment : Fragment() {
         val altura = binding.tvAltura.text.toString().toDouble()
 
         if(name.isNotEmpty()){//Al menos se tiene un nombre
-                val place = Place(0 , name,email , phone , web,latitud,longitud,altura,"","")
+                val place = Place("" , name,email , phone , web,latitud,longitud,altura,"","")
             placeViewModel.savePlace(place)
 
             Toast.makeText(requireContext(),getString(R.string.msg_place_added),Toast.LENGTH_SHORT).show()

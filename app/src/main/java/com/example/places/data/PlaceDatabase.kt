@@ -1,14 +1,14 @@
 package com.example.places.data
-
+/*
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.places.model.Place
 
 @Database(entities = [Place:: class], version = 1, exportSchema = false)
-
-abstract class PlaceDatabase : RoomDatabase(){
-
+*/
+abstract class PlaceDatabase { //: RoomDatabase()
+/*
     abstract fun placeDao(): PlaceDao
 
     companion object{
@@ -38,4 +38,6 @@ abstract class PlaceDatabase : RoomDatabase(){
             }
         }
     }
+
+ */
 }
