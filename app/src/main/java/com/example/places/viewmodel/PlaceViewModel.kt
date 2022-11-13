@@ -14,7 +14,7 @@ class PlaceViewModel(application: Application) : AndroidViewModel(application) {
 
     val getPlaces = repository.getPlaces
 
-     fun savePlace(place: Place) {
+    fun savePlace(place: Place) {
         viewModelScope.launch {
             repository.savePlace(place)
         }

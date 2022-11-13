@@ -14,7 +14,7 @@ class PlaceRepository (private val placeDao : PlaceDao){
 
 
 
-    suspend fun deletePlace(place: Place){
+     fun deletePlace(place: Place){
         placeDao.deletePlace(place)
     }
 

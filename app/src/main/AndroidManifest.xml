@@ -11,6 +11,11 @@
 <uses-permission android:name="permision.ACCESS_FINE_LOCATION"/>
 <uses-permission android:name="permission.ACCESS_COARSE_LOCATION"/>
 
+<uses-permission android:name="android.permission.RECORD_AUDIO" />
+<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+    tools:ignore="ScopedStorage" />
+
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -35,6 +40,19 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <!-- Esto se requiere para guardar las imagenes de la camera -->
+        
+        <provider
+            android:authorities="${applicationId}.provider"
+            android:name="androidx.core.content.FileProvider"
+            android:exported ="false"
+            android:grantUriPermissions ="true">
+            <meta-data android:name="andorid.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+            </provider>
+
+
     </application>
 
 </manifest>

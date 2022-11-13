@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.places.databinding.FragmentAddPlaceBinding
 import com.example.places.databinding.PlaceRowBinding
 import com.example.places.model.Place
@@ -25,6 +26,10 @@ class PlaceAdapter : RecyclerView.Adapter<PlaceAdapter.PlaceViewHolder>(){
                     itemBinding.tvName.text = place.name
                     itemBinding.tvCellphone.text = place.phone
                     itemBinding.tvCorreo.text = place.email
+                    Glide.with(itemBinding.root.context)
+                        .load(place.ruta_img)
+                        .circleCrop()
+                        .into(itemBinding.imageView2)
                     itemBinding.vistaRow.setOnClickListener {
                         val accion = PlaceFragmentDirections.
                                         actionNavPlaceToUpdatePlaceFragment(place)

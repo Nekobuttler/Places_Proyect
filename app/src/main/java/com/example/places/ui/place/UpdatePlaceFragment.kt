@@ -3,6 +3,8 @@ import android.Manifest
 import android.app.AlertDialog
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.media.AsyncPlayer
+import android.media.MediaPlayer
 import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,6 +16,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
+import com.bumptech.glide.Glide
 import com.example.places.R
 import com.example.places.databinding.FragmentAddPlaceBinding
 import com.example.places.databinding.FragmentUpdatePlaceBinding
@@ -28,6 +31,8 @@ class UpdatePlaceFragment : Fragment() {
     //se recupera un argumento pasado
 
     private val args by navArgs<UpdatePlaceFragmentArgs>()
+
+    private lateinit var mediaPlayer: MediaPlayer
 
     private var _binding: FragmentUpdatePlaceBinding? = null
 
@@ -57,28 +62,51 @@ class UpdatePlaceFragment : Fragment() {
         binding.tvLongitud.text = args.place.longitud.toString()
         binding.tvAltura.text = args.place.altura.toString()
 
-        binding.btAddPlace.setOnClickListener{
+        binding.btAddPlace.setOnClickListener {
             updatePlace()
         }
 
-        binding.btDelete.setOnClickListener{
+        binding.btDelete.setOnClickListener {
             deletePlace()
         }
-        binding.btEmail.setOnClickListener{
+        binding.btEmail.setOnClickListener {
             sendEmail()
         }
-        binding.btPhone.setOnClickListener{
+        binding.btPhone.setOnClickListener {
             callPlace()
         }
-        binding.btWhatsapp.setOnClickListener{
+        binding.btWhatsapp.setOnClickListener {
             sendMessage()
         }
-        binding.btWeb.setOnClickListener{
+        binding.btWeb.setOnClickListener {
             seeWeb()
         }
-        binding.btLocation.setOnClickListener{
+        binding.btLocation.setOnClickListener {
             seeMap()
         }
+
+
+        if (args.place.ruta_audio?.isNotEmpty() == true) {
+            //Activamos boton para escuchar audio
+            mediaPlayer = MediaPlayer()
+            mediaPlayer.setDataSource(args.place.ruta_audio)
+            mediaPlayer.prepare()
+            binding.btPlay.isEnabled = true
+        } else {
+            binding.btPlay.isEnabled = false
+
+        }
+
+        binding.btPlay.setOnClickListener {
+        mediaPlayer.start()
+    }
+
+    if(args.place.ruta_img?.isNotEmpty() == true){
+        Glide.with(requireContext())
+            .load(args.place.ruta_img)
+            .fitCenter()
+            .into(binding.imagen)
+    }
 
         return binding.root
     }
