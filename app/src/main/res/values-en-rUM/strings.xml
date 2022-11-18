@@ -1,7 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Places</string>
-    <string name="tv_correo">Correo</string>
-    <string name="tv_clave">Contrase;a</string>
+    <string name="tv_correo">Email</string>
+    <string name="tv_clave">Password</string>
     <string name="title_activity_principal_content">principal_Content</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
@@ -19,13 +20,13 @@
 
     <string name="msg_name">Name of the place</string>
     <string name="msg_email">Email (correo@xxx.xxx)</string>
-    <string name="msg_cellphone">Telefono (9999-9999)</string>
-    <string name="msg_web">Sitio Web </string>
+    <string name="msg_cellphone">Phone (9999-9999)</string>
+    <string name="msg_web">WebSite </string>
     <string name="bt_add_place">Add Place</string>
     <string name="bt_update_place">Update Place</string>
     <string name="msg_place_added">Place Added</string>
     <string name="msg_place_updated">Place Updated</string>
-    <string name="msg_data">Faltan Datos</string>
+    <string name="msg_data">Data missing</string>
 
 
 
@@ -36,8 +37,8 @@
     <string name="msg_no">NO</string>
 
 
-    <string name="msg_enviar_correo">Enviar correo electrónico</string>
-    <string name="msg_phone_call">Realizar llamada telefónica</string>
+    <string name="msg_enviar_correo">Send  email</string>
+    <string name="msg_phone_call">Do a call</string>
     <string name="msg_whatsapp_send">Enviar mensaje WhatsApp</string>
     <string name="msg_web_view">Abrir sitio Web</string>
     <string name="msg_map_view">Ver lugar en mapa</string>
@@ -52,6 +53,4 @@
     <string name="msg_imagen">Imagen del lugar</string>
     <string name="graba_pausa">Graba o pausa grabación</string>
     <string name="todo">Luego...</string>
-    <string name="default_web_cliente_id_r" translatable="false">162418292660-8usjbcmoahbme31mcamfkoom5opt9s1c.apps.googleusercontent.com</string>
-
 </resources>

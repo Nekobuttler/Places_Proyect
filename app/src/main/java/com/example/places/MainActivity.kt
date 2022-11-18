@@ -6,9 +6,15 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import com.example.places.databinding.ActivityMainBinding
+import com.google.android.gms.auth.api.signin.GoogleSignIn
+import com.google.android.gms.auth.api.signin.GoogleSignInClient
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions
+import com.google.android.gms.common.api.ApiException
+import com.google.android.gms.signin.internal.SignInClientImpl
 import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.GoogleAuthProvider
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 import java.security.Principal
@@ -17,11 +23,16 @@ class MainActivity : AppCompatActivity() {
 
     //Definimos un objeto para acceder  la autenticacion
 
-    private lateinit var auth : FirebaseAuth
-
     //Definimos un objeto para acceder a los elementos
 
+
+    private lateinit var googleSignInClient: GoogleSignInClient
+
     private lateinit var binding: ActivityMainBinding
+
+    private lateinit var auth : FirebaseAuth
+
+
 
     //
 
@@ -51,14 +62,59 @@ class MainActivity : AppCompatActivity() {
         }
 
 
+        val gso = GoogleSignInOptions.Builder(
+            GoogleSignInOptions.DEFAULT_SIGN_IN)
+            .requestIdToken(getString(R.string.default_web_client_id))
+            .requestEmail()
+            .build()
 
+        googleSignInClient = GoogleSignIn.getClient(this , gso)
+
+        binding.btGoogle.setOnClickListener{
+            googleSignIn()
+        }
+
+    }
+
+    private fun googleSignIn() {
+        val signInIntent = googleSignInClient.signInIntent
+        startActivityForResult(signInIntent , 5000)
+    }
+
+    private fun firebaseAuth(idToken : String){
+            val credential = GoogleAuthProvider.getCredential(idToken , null)
+        auth.signInWithCredential(credential)
+            .addOnCompleteListener(this){
+                task ->
+                if(task.isSuccessful){
+                    val user = auth.currentUser
+                    refresh(user)
+                }else{
+                    refresh(null)
+                }
+
+            }
+    }
+
+    private fun OnActivityResult(requestCode: Int,resultCode:Int , data: Intent){
+        super.onActivityResult(requestCode,resultCode,data)
+        if(requestCode == 5000){
+            val task = GoogleSignIn.getSignedInAccountFromIntent(data)
+            try {
+                val account = task.getResult(ApiException::class.java)!!
+                firebaseAuthWithGoogle(account.idToken!!)
+            }catch (e:ApiException){
+
+            }
+
+        }
     }
 
     private fun SignIn() {
 
         //Recupero la informacion que le usuario escribio
-        val email= binding.etPassword.text.toString()
-        val password= binding.etEmail.text.toString()
+        val email= binding.etEmail.text.toString()
+        val password= binding.etPassword.text.toString()
 
         //Crear el usuario
         auth.createUserWithEmailAndPassword(email,password)
