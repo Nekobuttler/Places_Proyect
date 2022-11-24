@@ -28,7 +28,6 @@
     <string name="msg_data">Faltan Datos</string>
 
 
-
     <string name="bt_delete_place">Delete place</string>
     <string name="msg_deleted_place">Place Deleted</string>
     <string name="msg_question">Are you sure you want to eliminate this place??</string>

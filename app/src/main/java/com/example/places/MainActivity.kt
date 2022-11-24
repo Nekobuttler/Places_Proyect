@@ -102,7 +102,7 @@ class MainActivity : AppCompatActivity() {
             val task = GoogleSignIn.getSignedInAccountFromIntent(data)
             try {
                 val account = task.getResult(ApiException::class.java)!!
-                firebaseAuthWithGoogle(account.idToken!!)
+                firebaseAuth(account.idToken!!)
             }catch (e:ApiException){
 
             }

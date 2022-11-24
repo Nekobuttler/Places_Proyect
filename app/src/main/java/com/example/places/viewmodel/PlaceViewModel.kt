@@ -10,6 +10,7 @@ import kotlinx.coroutines.launch
 
 class PlaceViewModel(application: Application) : AndroidViewModel(application) {
 
+
     private val repository: PlaceRepository = PlaceRepository(PlaceDao())
 
     val getPlaces = repository.getPlaces

@@ -2,19 +2,16 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.places">
-
-
-    <!-- seccion para colocar permisos nesesarios a aceptar por el usuario de la aplicacion-->
+    <!-- seccion para colocar permisos nesesarios a aceptar por el usuario de la aplicacion -->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="permision.Call_Phone"/>
-<uses-permission android:name="permision.ACCESS_FINE_LOCATION"/>
-<uses-permission android:name="permission.ACCESS_COARSE_LOCATION"/>
-
-<uses-permission android:name="android.permission.RECORD_AUDIO" />
-<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-    tools:ignore="ScopedStorage" />
-
+    <uses-permission android:name="permision.Call_Phone" />
+    <uses-permission android:name="permision.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
 
     <application
         android:allowBackup="true"
@@ -39,20 +36,16 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!-- Esto se requiere para guardar las imagenes de la camera -->
-        
+        </activity> <!-- Esto se requiere para guardar las imagenes de la camera -->
         <provider
-            android:authorities="${applicationId}.provider"
             android:name="androidx.core.content.FileProvider"
-            android:exported ="false"
-            android:grantUriPermissions ="true">
-            <meta-data android:name="andorid.support.FILE_PROVIDER_PATHS"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths" />
-            </provider>
-
-
+        </provider>
     </application>
 
 </manifest>
