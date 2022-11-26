@@ -11,7 +11,7 @@
     <string name="action_settings">Settings</string>
 
     <string name="menu_place">Places</string>
-    <string name="menu_gallery">Gallery</string>
+    <string name="menu_gallery">Mapa</string>
     <string name="menu_slideshow">Slideshow</string>
 
     <!-- TODO: Remove or change this placeholder text -->
@@ -52,5 +52,10 @@
     <string name="graba_pausa">Graba o pausa grabación</string>
     <string name="todo">Luego...</string>
     <string name="default_web_cliente_id_r" translatable="false">162418292660-8usjbcmoahbme31mcamfkoom5opt9s1c.apps.googleusercontent.com</string>
+
+    <string name="google_map_key_api" translatable="false">AIzaSyCA_zkvjzl3r9bok4FyoZ__IXsorvLLPHY</string>
+
+
+
 
 </resources>
