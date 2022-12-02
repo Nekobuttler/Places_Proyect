@@ -49,6 +49,7 @@ class PlaceAdapter : RecyclerView.Adapter<PlaceAdapter.PlaceViewHolder>(){
 
         return PlaceViewHolder(itemBinding)
     }
+    //AAAA
 
     //Con la vista creada llenara los datos dentro de la caja
     override fun onBindViewHolder(holder: PlaceViewHolder, position: Int) {
